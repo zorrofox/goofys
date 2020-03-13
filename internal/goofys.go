@@ -102,13 +102,25 @@ func NewBackend(bucket string, flags *FlagStorage) (cloud StorageBackend, err er
 		flags.Backend = (&S3Config{}).Init()
 	}
 
-	if config, ok := flags.Backend.(*AZBlobConfig); ok {
-		cloud, err = NewAZBlob(bucket, config)
-	} else if config, ok := flags.Backend.(*ADLv1Config); ok {
-		cloud, err = NewADLv1(bucket, flags, config)
-	} else if config, ok := flags.Backend.(*ADLv2Config); ok {
-		cloud, err = NewADLv2(bucket, flags, config)
-	} else if config, ok := flags.Backend.(*S3Config); ok {
+	// if config, ok := flags.Backend.(*AZBlobConfig); ok {
+	// 	cloud, err = NewAZBlob(bucket, config)
+	// } else if config, ok := flags.Backend.(*ADLv1Config); ok {
+	// 	cloud, err = NewADLv1(bucket, flags, config)
+	// } else if config, ok := flags.Backend.(*ADLv2Config); ok {
+	// 	cloud, err = NewADLv2(bucket, flags, config)
+	// } else if config, ok := flags.Backend.(*S3Config); ok {
+	// 	if strings.HasSuffix(flags.Endpoint, "/storage.googleapis.com") {
+	// 		cloud, err = NewGCS3(bucket, flags, config)
+	// 	} else {
+	// 		cloud, err = NewS3(bucket, flags, config)
+	// 	}
+	// } else {
+	// 	err = fmt.Errorf("Unknown backend config: %T", flags.Backend)
+	// }
+
+	// Add Only AWS S3 support
+    
+    if config, ok := flags.Backend.(*S3Config); ok {
 		if strings.HasSuffix(flags.Endpoint, "/storage.googleapis.com") {
 			cloud, err = NewGCS3(bucket, flags, config)
 		} else {
