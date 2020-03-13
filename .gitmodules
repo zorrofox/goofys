@@ -16,18 +16,6 @@
 [submodule "vendor/github.com/jacobsa/fuse"]
 	path = vendor/github.com/jacobsa/fuse
 	url = https://github.com/kahing/fusego
-[submodule "vendor/github.com/Azure/go-autorest"]
-	path = vendor/github.com/Azure/go-autorest
-	url = https://github.com/Azure/go-autorest/
-[submodule "vendor/github.com/Azure/azure-pipeline-go"]
-	path = vendor/github.com/Azure/azure-pipeline-go
-	url = https://github.com/Azure/azure-pipeline-go/
-[submodule "vendor/github.com/Azure/azure-sdk-for-go"]
-	path = vendor/github.com/Azure/azure-sdk-for-go
-	url = https://github.com/Azure/azure-sdk-for-go
-[submodule "vendor/github.com/Azure/azure-storage-blob-go"]
-	path = vendor/github.com/Azure/azure-storage-blob-go
-	url = https://github.com/Azure/azure-storage-blob-go/
 [submodule "vendor/github.com/google/uuid"]
 	path = vendor/github.com/google/uuid
 	url = https://github.com/google/uuid
