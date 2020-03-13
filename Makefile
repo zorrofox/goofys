@@ -14,3 +14,6 @@ build:
 
 install:
 	go install -ldflags "-X main.Version=`git rev-parse HEAD`"
+
+linux: 
+	CGO_ENABLED=0 GOOS=linux go install -ldflags "-X main.Version=`git rev-parse HEAD`"
