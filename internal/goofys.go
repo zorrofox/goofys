@@ -121,11 +121,7 @@ func NewBackend(bucket string, flags *FlagStorage) (cloud StorageBackend, err er
 	// Add Only AWS S3 support
     
     if config, ok := flags.Backend.(*S3Config); ok {
-		if strings.HasSuffix(flags.Endpoint, "/storage.googleapis.com") {
-			cloud, err = NewGCS3(bucket, flags, config)
-		} else {
-			cloud, err = NewS3(bucket, flags, config)
-		}
+		cloud, err = NewS3(bucket, flags, config)
 	} else {
 		err = fmt.Errorf("Unknown backend config: %T", flags.Backend)
 	}
@@ -209,7 +205,7 @@ func newGoofys(ctx context.Context, bucket string, flags *FlagStorage,
 		log.Errorf("Unable to setup backend: %v", err)
 		return nil
 	}
-	_, fs.gcs = cloud.Delegate().(*GCS3)
+	//_, fs.gcs = cloud.Delegate().(*GCS3)
 
 	randomObjectName := prefix + (RandStringBytesMaskImprSrc(32))
 	err = cloud.Init(randomObjectName)
